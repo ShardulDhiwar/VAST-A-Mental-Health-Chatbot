@@ -1,0 +1,84 @@
+
+## 💡 Alternative Guide: Setting Up Dialogflow & Training Intents
+
+This is a streamlined guide for quickly setting up Dialogflow and training your chatbot with custom intents.
+
+---
+
+### ✅ Prerequisites
+- A Google account
+- Python 3.7+
+- `pip` (Python package installer)
+- Google Cloud CLI (optional but helpful)
+
+---
+
+### ⚖️ Step 1: Create a Google Cloud Project & Enable Dialogflow API
+1. Visit [https://console.cloud.google.com/](https://console.cloud.google.com/)
+2. Click **New Project** and give it a name (e.g., `mental-health-bot`)
+3. After creation, go to **APIs & Services > Library**
+4. Search for **Dialogflow API** and click **Enable**
+
+---
+
+### 🔐 Step 2: Create Service Account & Download Credentials
+1. In Google Cloud Console, go to **IAM & Admin > Service Accounts**
+2. Click **Create Service Account**
+3. Name it (e.g., `dialogflow-access`) and assign role: `Dialogflow API Client`
+4. After creation, click **Add Key > Create new key**
+   - Choose `JSON`, download and save the file in your project folder
+
+---
+
+### ⚙️ Step 3: Configure Your Environment
+1. Store the credentials path in an environment variable:
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="./your_service_account_file.json"
+```
+
+2. Alternatively, hardcode the path (not recommended for production):
+```python
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "your_service_account_file.json"
+```
+
+---
+
+### 📆 Step 4: Train Intents Using a JSON File
+Ensure your `intents.json` looks like this:
+
+```json
+{
+  "intents": [
+    {
+      "tag": "greet",
+      "patterns": ["Hello", "Hi there"],
+      "responses": ["Hi! How can I help you today?"]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you"],
+      "responses": ["You're welcome!", "No problem!"]
+    }
+  ]
+}
+```
+
+Use the helper function in `app.py` to import:
+
+```python
+import_intents_from_json("intents.json")
+```
+
+Run the script:
+```bash
+python app.py
+```
+
+This will import all your training phrases and responses to Dialogflow.
+
+---
+
+### 🚀 You're All Set!
+
+Now your chatbot is ready to receive and handle user queries using the trained intents.
