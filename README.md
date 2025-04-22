@@ -1,4 +1,4 @@
-# 🧠 Mental Health Chatbot (Flask + Dialogflow + PostgreSQL)
+# 🧠  VAST A Mental Health Chatbot (Flask + Dialogflow + PostgreSQL)
 
 This is a full-stack web application designed to provide users with mental health support through an intelligent chatbot. It integrates Google Dialogflow for natural language understanding, uses Flask for backend services, and PostgreSQL for database management. Users can register, log in, and interact with a chatbot that understands mental health queries based on pre-trained intents.
 
